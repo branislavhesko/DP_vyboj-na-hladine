@@ -79,13 +79,13 @@ def split_distinct_discharges(labeled_image, centroids):
         temp_image = skimage.measure.label(temp_image, background=0)
         heights = []
         if np.amax(temp_image) > 1:
-            for i in range(np.amax(tem_image)):
+            for i in range(np.amax(temp_image)):
                 heights.append(get_height(image, i))
 
             max_height = np.amax(np.array(heights))
             for i, height in enumerate(heights):
                 if height != max_height and height > 0.3*max_height:
-                    labeled_image[labeled_image = i] = centroids[-1][0] + 1
+                    labeled_image[labeled_image == i] = centroids[-1][0] + 1
 
 
     return labeled_image
@@ -133,9 +133,10 @@ def get_border_direction(border):
         max x difference and max y difference
     """
     val_x = border[0][0]
-    vyl_y = border[0][1]
+    val_y = border[0][1]
     max_x = 0
     max_y = 0
+
     for x,y in border:
         max_x = max(x - val_x, max_x)
         max_y = max(y - val_y, max_y)

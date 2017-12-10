@@ -207,5 +207,9 @@ def plot_multiple_images(list_of_images):
         ax[i%2].imshow(image, clim = (-10,10), cmap = "jet")
 
     pyplot.show()
+
+
+
+
 if __name__ == "__main__":
-    plot_multiple_images([np.zeros((10,10)), np.ones((10,10))])
+    i = 0
